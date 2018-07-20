@@ -44,7 +44,7 @@ def main():
 
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("help", help, filters=Filters.user(user_id=144149077)))
+    dp.add_handler(CommandHandler("help", help, filters=Filters.user(user_id=144149077) & Filters.user(user_id=404495741)))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
