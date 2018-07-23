@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 def start(bot, update):
     print(update.message.text)
-    update.message.reply_text('Hi!')
+    update.message.reply_text('Hi! ')
 
 def new_member(bot, update):
     print(update.message.text)
