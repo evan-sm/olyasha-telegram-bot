@@ -6,6 +6,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, Callb
 # from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 import logging
 import tkn
+from cmd.mem import mem
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -16,6 +17,7 @@ def start(bot, update):
     print(update.message.text)
     update.message.reply_text('Hi! ')
 
+
 def new_member(bot, update):
     print(update.message.text)
     update.message.reply_sticker(sticker='CAADAgADaQADk5h-FwzA5kpuP7CvAg')
@@ -23,38 +25,6 @@ def new_member(bot, update):
 
 def help(bot, update):
     update.message.reply_text('Help! | ' + str(update.message.chat_id))
-
-
-def mem(bot, update, args):
-    print(update.message.text)
-    if not args:
-        bot.send_message(chat_id=update.message.chat_id,
-                        text='Мемы:\n'
-                        '/mem дуранчоусы  — <i>Вы шо дуранчоусы?</i>\n'
-                        '/mem борис  — <i>Похотливый Борис</i>', parse_mode='HTML')
-    for s in args:
-        if s.lower() == 'дуранчоусы':
-            bot.send_chat_action(chat_id=update.message.chat_id, action='record_video_note')
-            bot.send_video_note(chat_id=update.message.chat_id, video_note='DQADAgADVQIAAnNbMUv23rJ7tb5U0QI')
-            # bot.send_video_note(chat_id=update.message.chat_id, video_note=open('files/duranchousi.mp4', 'rb'), duration=1)
-        elif s.lower() == 'борис':
-            bot.send_chat_action(chat_id=update.message.chat_id, action='record_video_note')
-            bot.send_video_note(chat_id=update.message.chat_id, video_note='DQADAgADWwIAAoCFUUqPv5dxuJnYcAI')
-
-
-def mem_btn(bot, update):
-    q = update.callback_query
-    # bot.edit_message_text(text='Selected: {}'.format(q.data),
-    #                       chat_id=q.message.chat_id,
-    #                       message_id=q.message.message_id)
-    if q.data == 'дуранчоусы':
-        bot.send_chat_action(chat_id=q.message.chat_id, action='record_video_note')
-        bot.delete_message(chat_id=q.message.chat_id, message_id=q.message.message_id)
-        # bot.edit_message_text(text='/meme {}'.format(q.data),
-        #                                             chat_id=q.message.chat_id,
-        #                                             message_id=q.message.message_id)
-        bot.send_video_note(chat_id=q.message.chat_id, video_note=open('files/duranchousi.mp4', 'rb'), \
-                        length='352', duration=1)
 
 
 def getchatid(bot, update):
@@ -68,7 +38,7 @@ def error(bot, update, error):
 def main():
     updater = Updater(tkn.BOT_TKN)
     dp = updater.dispatcher
-    dp.add_handler(CallbackQueryHandler(mem_btn))
+    # dp.add_handler(CallbackQueryHandler(mem_btn))
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("mem", mem, pass_args=True))
     # dp.add_handler(CommandHandler("getchatid", getchatid))
