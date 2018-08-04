@@ -28,26 +28,6 @@ def help(bot, update):
 def mem(bot, update, args):
     print(update.message.text)
     if not args:
-        # bot.send_chat_action(chat_id=update.message.chat_id, action='typing')
-        # kb = [[telegram.KeyboardButton('/mem дуранчоусы')],
-        #       [telegram.KeyboardButton('/mem тест')],
-        #       [telegram.KeyboardButton('/mem тест')],
-        #       [telegram.KeyboardButton('/mem тест')],
-        #       [telegram.KeyboardButton('/mem тест')],
-        #       [telegram.KeyboardButton('/mem тест')],]
-        # kb_markup = telegram.ReplyKeyboardMarkup(kb, resize_keyboard=True, one_time_keyboard=True, selective=True)
-        # print(update.message.message_id)
-        # print(update.message.from_user)
-        # print(update.message.from_user['first_name'])
-        # bot.send_message(chat_id=update.message.chat_id,
-        #                 text='<a href="tg://user?id=%s">%s</a> Мемы:\n'
-        #                 '/mem дуранчоусы — Вы шо дуранчоусы?\n'
-        #                 '/mem тест — тест' % (update.message.from_user['id'], update.message.from_user['first_name']), parse_mode='HTML',
-        #                  reply_markup=kb_markup)
-        # kb = [[InlineKeyboardButton('дуранчоусы', callback_data='дуранчоусы'),
-        #        InlineKeyboardButton('похотливый_борис', callback_data='2')],
-        #       [InlineKeyboardButton('Option 3', callback_data='3')]]
-        # kb_markup = InlineKeyboardMarkup(kb)
         bot.send_message(chat_id=update.message.chat_id,
                         text='Мемы:\n'
                         '/mem дуранчоусы  — <i>Вы шо дуранчоусы?</i>\n'
@@ -55,12 +35,11 @@ def mem(bot, update, args):
     for s in args:
         if s.lower() == 'дуранчоусы':
             bot.send_chat_action(chat_id=update.message.chat_id, action='record_video_note')
-            bot.send_video_note(chat_id=update.message.chat_id, video_note='DQADAgADUAIAAjpVqUoP0y7cItR_swI')
-            # bot.send_video_note(chat_id=update.message.chat_id, video_note=open('files/duranchousi.mp4', 'rb'),
-            #                     length='352', duration=1)
+            bot.send_video_note(chat_id=update.message.chat_id, video_note='DQADAgADVQIAAnNbMUv23rJ7tb5U0QI')
+            # bot.send_video_note(chat_id=update.message.chat_id, video_note=open('files/duranchousi.mp4', 'rb'), duration=1)
         elif s.lower() == 'борис':
             bot.send_chat_action(chat_id=update.message.chat_id, action='record_video_note')
-            bot.send_video_note(chat_id=update.message.chat_id, video_note='DQADAgADWwIAAoCFUUqenc0y23OmGgI')
+            bot.send_video_note(chat_id=update.message.chat_id, video_note='DQADAgADWwIAAoCFUUqPv5dxuJnYcAI')
 
 
 def mem_btn(bot, update):
